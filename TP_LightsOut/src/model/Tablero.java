@@ -31,7 +31,10 @@ public class Tablero
 			System.out.println("SI TIENEN SOLUCION");
 		}
 	}
-	
+
+	public void restartTablero(){
+		this.llenarTablero();
+	}
 
 	//verifica si el juego esta resuelto
 	public boolean estaResuelto()

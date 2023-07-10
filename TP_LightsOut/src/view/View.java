@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import javax.swing.WindowConstants;
 
@@ -117,16 +116,10 @@ public class View extends JFrame
     }
     
     //lanza un mensaje de game over
-    public void gameOver()
+    public void gameRestart(boolean[][] tableroActualilzado)
     {
-    	JOptionPane.showMessageDialog(frame, "Game Over");
-    }
-
-    
-    public void gameStart(boolean[][] tableroActualilzado){
-        
-        // Crear un botón
-        JButton boton = new JButton("Haz clic");
+    	// Crear un botón
+        JButton boton = new JButton("New Game");
         setLayout(new BorderLayout());
         
         // Agregar el botón al JFrame
@@ -135,7 +128,33 @@ public class View extends JFrame
         // Configurar el tamaño y cierre de la ventana
         setSize(200, 100);
         setLocationRelativeTo(null);
-        boton.setText("Start Game");
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+
+        boton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+        // Acciones a realizar cuando se hace clic en el botón
+        actualizarBotones(tableroActualilzado);
+        dispose();
+    }
+});
+    }
+
+    
+    public void gameStart(boolean[][] tableroActualilzado){
+        
+        // Crear un botón
+        JButton boton = new JButton("Start Game");
+        setLayout(new BorderLayout());
+        
+        // Agregar el botón al JFrame
+        add(boton, BorderLayout.CENTER);
+        
+        // Configurar el tamaño y cierre de la ventana
+        setSize(200, 100);
+        setLocationRelativeTo(null);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 

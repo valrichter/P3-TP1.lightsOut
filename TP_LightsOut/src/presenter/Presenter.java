@@ -26,13 +26,20 @@ public class Presenter implements ViewListener
         
         //si esta resuelto finalizamos el juego
         if(tablero.estaResuelto())
-        	view.gameOver();;
+        	botonRestart();
     }
 
     public void botonStart()
     {
         //actualizamos el view
         view.gameStart(tablero.getTablero());
+    }
+
+    public void botonRestart()
+    {
+        //actualizamos el view
+        this.tablero.restartTablero();
+        view.gameRestart(tablero.getTablero());
     }
     
 }
