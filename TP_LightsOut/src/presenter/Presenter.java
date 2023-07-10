@@ -12,7 +12,8 @@ public class Presenter implements ViewListener
     {
         this.view = view;
         view.addListener(this);
-        this.tablero = tablero;    
+        this.tablero = tablero;
+        botonStart();
     }
 
     @Override
@@ -26,6 +27,12 @@ public class Presenter implements ViewListener
         //si esta resuelto finalizamos el juego
         if(tablero.estaResuelto())
         	view.gameOver();;
+    }
+
+    public void botonStart()
+    {
+        //actualizamos el view
+        view.gameStart(tablero.getTablero());
     }
     
 }

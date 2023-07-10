@@ -6,7 +6,6 @@ public class Tablero
 {
 	private boolean[][] tablero;
 	private Random random = new Random();
-	
 	/*Constructor*/
 	public Tablero(int tamanio)
 	{	
@@ -14,7 +13,7 @@ public class Tablero
 		this.tablero = new boolean[tamanio][tamanio];
 		this.llenarTablero();
 	}
-	
+
 	//llena del tablero de booleans randoms
 	private void llenarTablero()
 	{
@@ -22,10 +21,17 @@ public class Tablero
 	    { 
 	    	for(int columna = 0; columna<tablero[fila].length; columna++)
 	    	{ 
-				tablero[fila][columna] = this.random.nextBoolean();
+				tablero[fila][columna] = this.random.nextBoolean();		
 			}
 		}
+		if(Solver.hasSolution(tablero) == false){
+			System.out.println("NO TIENEN SOLUCION");
+				llenarTablero();
+		} else{
+			System.out.println("SI TIENEN SOLUCION");
+		}
 	}
+	
 
 	//verifica si el juego esta resuelto
 	public boolean estaResuelto()

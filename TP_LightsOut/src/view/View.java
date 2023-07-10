@@ -1,11 +1,13 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
@@ -14,18 +16,18 @@ import javax.swing.WindowConstants;
 import presenter.ViewListener;
 
 
-public class View
+public class View extends JFrame
 {
     //la lista de observers
     private ArrayList<ViewListener> listeners = new ArrayList<ViewListener>();;
     private JFrame frame = new JFrame();
     private JToggleButton[][] botones;
-    
+
     public View(int tamanio)
     {
     	this.botones = new JToggleButton[tamanio][tamanio];
-    	
         frame.setBounds(100, 100, 500, 500);
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLayout(new GridLayout(tamanio, tamanio, 2, 2));
         
@@ -119,5 +121,33 @@ public class View
     {
     	JOptionPane.showMessageDialog(frame, "Game Over");
     }
+
+    
+    public void gameStart(boolean[][] tableroActualilzado){
+        
+        // Crear un botón
+        JButton boton = new JButton("Haz clic");
+        setLayout(new BorderLayout());
+        
+        // Agregar el botón al JFrame
+        add(boton, BorderLayout.CENTER);
+        
+        // Configurar el tamaño y cierre de la ventana
+        setSize(200, 100);
+        setLocationRelativeTo(null);
+        boton.setText("Start Game");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+
+        boton.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+        // Acciones a realizar cuando se hace clic en el botón
+        actualizarBotones(tableroActualilzado);
+        dispose();
+    }
+});
+
+    }
+    
     
 }
