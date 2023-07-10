@@ -17,4 +17,5 @@ objetivo es lograr que todas las luces de la grilla terminen apagadas.
 1) Algunas funciones tienen explicacion dentro del codigo
 2) Se utlizo el JDK 17.0.7 (javac -version)
 3) Descargar el repositorio e iniciar el archivo /src/application/MainGame.java en algun IDE de Java
+
 [VIDEO DEMO](https://youtu.be/AVYKw4ZI_Sg)
